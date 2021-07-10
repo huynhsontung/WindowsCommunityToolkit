@@ -11,7 +11,7 @@
     <Application.Resources>
 
         <!--  Workarounds for .NET Native issue in unit tests  -->
-        <ui:EnumValuesExtension x:Key="DummyExtension"/>
+        <ui:EnumValuesExtension x:Key="DummyExtension" />
 
         <unitTestExtensions:Animal x:Key="Animal">Cat</unitTestExtensions:Animal>
 
@@ -44,6 +44,8 @@
         </TextBox>
 
         <Style TargetType="controls:UniformGrid" />
+        <Style x:Key="DefaultRichEditBoxStyle"
+               TargetType="RichEditBox" />
         <ui:NullableBoolExtension x:Key="nullableBool" />
 
         <helpers:ObjectWithNullableBoolProperty x:Key="objectWithNullableBoolProperty" />

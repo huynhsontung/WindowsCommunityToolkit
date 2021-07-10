@@ -84,15 +84,18 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         public void ClearUndoRedoSuggestionHistory()
         {
             TextDocument.ClearUndoRedoHistory();
-            if (_tokens.Count == 0)
+            lock (LockObj)
             {
-                return;
-            }
+                if (_tokens.Count == 0)
+                {
+                    return;
+                }
 
-            var keysToDelete = _tokens.Where(pair => !pair.Value.Active).Select(pair => pair.Key).ToArray();
-            foreach (var key in keysToDelete)
-            {
-                _tokens.Remove(key);
+                var keysToDelete = _tokens.Where(pair => !pair.Value.Active).Select(pair => pair.Key).ToArray();
+                foreach (var key in keysToDelete)
+                {
+                    _tokens.Remove(key);
+                }
             }
         }
 
